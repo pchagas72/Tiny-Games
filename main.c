@@ -90,10 +90,24 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv){
     settings.reset_game = false;
     settings.bricks_x = 10;
     settings.bricks_y = 5;
-    
+
     bricks = (Brick **)malloc(settings.bricks_y * sizeof(Brick *));
+    if (bricks == NULL){
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to allocate memory for bricks rows.");
+        return SDL_APP_FAILURE;
+    }
+
     for (int i = 0; i < settings.bricks_y; i++){
         bricks[i] = (Brick *)malloc(settings.bricks_x * sizeof(Brick));
+        if (bricks[i] == NULL) {
+            SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to allocate memory for bricks columns.");
+            // Free the already allocated memory before exiting
+            for (int j = 0; j < i; j++) {
+                free(bricks[j]);
+            }
+            free(bricks);
+            return SDL_APP_FAILURE;
+        }
     }
 
     init_bricks(
@@ -114,6 +128,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv){
 /// This function runs every time an event happens
 /// An event could be a keypress
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event){
+
     if (event->type == SDL_EVENT_QUIT){
         return SDL_APP_SUCCESS;
     }
@@ -221,7 +236,7 @@ SDL_AppResult SDL_AppIterate(void *appstate){
             // Ball Movement
             update_ball(&ball, &paddle);
             // Brick and game state update
-            updated_bricks(
+            update_bricks(
                     bricks,
                     &settings,
                     &destroyed_bricks,

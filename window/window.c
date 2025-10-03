@@ -57,23 +57,3 @@ SDL_AppResult init_renderer(SDL_Renderer **renderer, SDL_Window *window){
 
     return SDL_APP_CONTINUE;
 }
-SDL_AppResult init_font(TTF_Font **font){
-    clock_t start_time_init, end_time;
-    double time_taken;
-    start_time_init = clock();
-    if (!TTF_Init()){
-        printf("[SDL] Could not init SDL_ttf\n");
-        return SDL_APP_FAILURE;
-    }
-    end_time = clock();
-    time_taken = ((double)(end_time - start_time_init)) / CLOCKS_PER_SEC;
-    printf("[SDL] Initialized SDL_ttf in %f seconds.\n", time_taken) ;
-    
-    *font = TTF_OpenFont("res/PublicPixel.ttf", FONT_SIZE);
-    if (!font){
-        printf("Failed to load font.\n");
-    }
-
- 
-    return SDL_APP_CONTINUE;
-}

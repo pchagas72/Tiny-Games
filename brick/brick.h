@@ -22,7 +22,7 @@ typedef struct {
 } Brick;
 
 void init_bricks(Brick **bricks, Settings *settings, SDL_Color colors[], uint16_t *destroyed_bricks);
-void updated_bricks(Brick **bricks,
+void update_bricks(Brick **bricks,
         Settings *settings,
         uint16_t *destroyed_bricks,
         Ball *ball,

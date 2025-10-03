@@ -11,8 +11,8 @@ void init_ball(Ball *ball, bool first_init){
     ball->rect.x = (SCREEN_HEIGHT - BALL_SIZE) / 2.0f;
     ball->rect.w = BALL_SIZE;
     ball->rect.h = BALL_SIZE;
-    ball->dx = 200.0f;
-    ball->dy = -200.0f;
+    ball->dx = BALL_INITIAL_DX;
+    ball->dy = BALL_INITIAL_DY;
     if (first_init) {
         ball->speed = 1.;
     }

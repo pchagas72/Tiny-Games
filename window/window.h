@@ -17,6 +17,5 @@ SDL_AppResult init_video();
 SDL_AppResult init_window(SDL_Window **window);
 SDL_AppResult init_renderer(SDL_Renderer **renderer,
                                 SDL_Window *window);
-SDL_AppResult init_font(TTF_Font **font);
 
 #endif

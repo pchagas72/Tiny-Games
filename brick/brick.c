@@ -25,7 +25,7 @@ void init_bricks(Brick **bricks, Settings *settings, SDL_Color colors[], uint16_
     printf("[GAME] Initialized bricks in %f seconds.\n", time_taken) ;
 }
 
-void updated_bricks(Brick **bricks, Settings *settings, uint16_t *destroyed_bricks, Ball *ball, enum GAME_STATE *state){
+void update_bricks(Brick **bricks, Settings *settings, uint16_t *destroyed_bricks, Ball *ball, enum GAME_STATE *state){
             // Ball collision with bricks
             for (int y = 0; y < settings->bricks_y; y++) {
                 for (int x = 0; x < settings->bricks_x; x++) {

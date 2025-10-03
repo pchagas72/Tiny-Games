@@ -6,7 +6,10 @@
 #include <stdio.h>
 #include "../window/window.h"
 #include "../paddle/paddle.h"
+
 #define BALL_SIZE 15
+#define BALL_INITIAL_DX 200.0f
+#define BALL_INITIAL_DY -200.0f
 
 typedef struct {
     SDL_FRect rect;
