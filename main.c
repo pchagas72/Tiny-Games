@@ -88,7 +88,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv){
     init_ball(&ball, true);
     settings.dark_mode = false;
     settings.reset_game = false;
-    settings.bricks_x = 10;
+    settings.bricks_x = 8;
     settings.bricks_y = 5;
 
     bricks = (Brick **)malloc(settings.bricks_y * sizeof(Brick *));

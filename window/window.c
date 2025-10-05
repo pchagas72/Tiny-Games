@@ -51,9 +51,7 @@ SDL_AppResult init_renderer(SDL_Renderer **renderer, SDL_Window *window){
     }
     end_time = clock();
     time_taken = ((double)(end_time - start_time_init)) / CLOCKS_PER_SEC;
-    SDL_SetRenderLogicalPresentation(*renderer, 600, 600, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+    SDL_SetRenderLogicalPresentation(*renderer, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_LOGICAL_PRESENTATION_LETTERBOX);
     printf("[SDL] Initialized renderer in %f seconds.\n", time_taken) ;
-
-
     return SDL_APP_CONTINUE;
 }
